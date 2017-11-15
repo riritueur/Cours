@@ -21,19 +21,16 @@ public class Membre extends Sommet implements MemberInterface{
 
 	@Override
 	public int getAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return age;
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return descr;
 	}
 
 	@Override
 	public String ident() {
-		// TODO Auto-generated method stub
-		return null;
+		return nom;
 	}
 }
