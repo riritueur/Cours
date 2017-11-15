@@ -6,13 +6,13 @@ import facebookGhost.FacebookGhostNetwork;
 import java.util.Collection;
 import java.util.Set;
 
-import org.junit.Before;qq
+import org.junit.Before;
 import org.junit.Test;
 
 
 // This class corresponds to my implementation.
 // You must substitute your own class.
-import reseauSocial.implementation2016.SocialNetWorkImpl;
+import reseauSocial.core.SocialNetworkInterface;
 
 import reseauSocial.core.MemberInterface;
 import reseauSocial.core.SocialNetworkInterface;

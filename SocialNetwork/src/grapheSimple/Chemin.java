@@ -10,7 +10,7 @@ import java.util.Collection;
 
 
 /**
- * La classe Chemin d√©finit un chemin comme un ensemble d'arcs et maintient pour chaque chemin
+ * La classe Chemin définit un chemin comme un ensemble d'arcs et maintient pour chaque chemin 
  * la somme des valeurs des arcs
  * 
  * @author blay
@@ -18,7 +18,7 @@ import java.util.Collection;
  */
 public class Chemin implements Comparable<Chemin>{
 
-	//On pourrait √©viter cet attribut en calculant la distance √† la demande.
+	//On pourrait éviter cet attribut en calculant la distance à la demande.
 	int distance = 0;
 
 	ArrayList<Arc> paths = new ArrayList<Arc> ();
@@ -62,8 +62,8 @@ public class Chemin implements Comparable<Chemin>{
 	}
 
 	/**
-	 * Ajoute un arc ÔøΩ la fin du chemin
-	 * TODO : verifier que le dernier noeud est bien le premier noeud de l'arc ajoutÔøΩ
+	 * Ajoute un arc à la fin du chemin
+	 * TODO : verifier que le dernier noeud est bien le premier noeud de l'arc ajouté
 	 */
 	public boolean add(Arc e) {
 		distance += e.valeur();
@@ -89,8 +89,8 @@ public class Chemin implements Comparable<Chemin>{
 
 	/**
 	 * verifie l'appartenance d'un arc au chemin
-	 * @param arc
-	 * @return vrai si l'arc appartient au chemin
+	 * @param o
+	 * @return vrai si l'arc appartien au chemin
 	 */
 	public boolean contains(Arc arc) {
 		return paths.contains(arc);
@@ -124,8 +124,8 @@ public class Chemin implements Comparable<Chemin>{
 	
 
 	/**
-	 * dÔøΩtermine si le sommet appartient au chemin
-	 * @param sommet
+	 * détermine si le sommet appartient au chemin
+	 * @param arrivee
 	 * @return vrai si le sommet appartient au chemin
 	 */
 	public boolean atteint(Sommet sommet) {
@@ -140,7 +140,7 @@ public class Chemin implements Comparable<Chemin>{
 	/**
 	 * @param depart
 	 * @param arrivee
-	 * @return le sous-chemin reliant depart et  arrivee si les deux noeuds appartiennent au chemin.
+	 * @return le sous-chemin reliant départ à l'arrivée si les deux noeuds appartiennent au chemin.
 	 * 
 	 */
 	public Chemin extraireChemin(Sommet depart, Sommet arrivee) {
