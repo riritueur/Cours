@@ -15,7 +15,6 @@ import org.junit.Test;
 import reseauSocial.core.SocialNetworkInterface;
 
 import reseauSocial.core.MemberInterface;
-import reseauSocial.core.SocialNetworkInterface;
 
 
 
