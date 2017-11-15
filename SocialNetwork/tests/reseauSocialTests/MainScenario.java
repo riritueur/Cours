@@ -2,6 +2,7 @@ package reseauSocialTests;
 
 import static org.junit.Assert.*;
 import facebookGhost.FacebookGhostNetwork;
+import resalSocial.ReseauSocial;
 
 import java.util.Collection;
 import java.util.Set;
@@ -26,7 +27,7 @@ public class MainScenario {
 
     @Before
     public void setUp() throws Exception {
-        iutRS = new SocialNetWorkImpl("IUT");
+        iutRS = new ReseauSocial("IUT");
 
     }
     @Test

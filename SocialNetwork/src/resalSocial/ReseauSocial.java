@@ -6,13 +6,15 @@ import java.util.Set;
 
 import facebookGhost.FacebookGhostNetwork;
 import grapheSimple.GrapheSimple;
+import grapheX.Sommet;
 import reseauSocial.core.MemberInterface;
 import reseauSocial.core.SocialNetworkInterface;
 
 public class ReseauSocial implements SocialNetworkInterface{
+	String nom;
 	GrapheSimple g = new GrapheSimple();
 	
-	public ReseauSocial(){}
+	public ReseauSocial(String nom){this.nom = nom;}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
@@ -20,8 +22,7 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public MemberInterface getMember(String identifier) {
-		// TODO Auto-generated method stub
-		return null;
+		return (MemberInterface) g.getSommet(identifier);
 	}
 
 	@Override
@@ -44,8 +45,7 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public void relate(int force, MemberInterface member, MemberInterface friend) {
-		// TODO Auto-generated method stub
-		
+		g.ajouterArc((Sommet) member, (Sommet) friend, force);
 	}
 
 	@Override
