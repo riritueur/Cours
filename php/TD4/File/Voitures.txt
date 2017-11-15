@@ -1,5 +1,0 @@
-Renault	Prix	Peugeot	Prix	Citroen	Prix	Volkswagen	Prix
-Twingo	123	107	123	C1	123	Lupo1	123	
-Clio	456	207	456	C3	456	Polo	456
-Megane	789	308	789	C4	789	Golf	789
-Laguna	101112	508	101112	C5	101112	Passat	101112
