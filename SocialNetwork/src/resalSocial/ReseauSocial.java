@@ -49,12 +49,25 @@ public class ReseauSocial implements SocialNetworkInterface{
 		if(belongsToAnotherNetwork){
 			FacebookGhostNetwork t = new FacebookGhostNetwork();
 			User u = t.getUser(ident);
+			if(u==null)
+				return null;
+			MemberInterface m = addMember(u.getName(),u.getAgeRange().getAge(),u.myProfil());
 			ArrayList<User> friends = u.getFriends();
 			ArrayList<User> family = u.getFamily();
 			
-			getMember(friends.get(0).getName());
+			for (int i=0; i<friends.size(); i++) {
+				if(getMember(friends.get(i).getName()) != null) {
+					relate(3, m, getMember(friends.get(i).getName()));
+				}
+			}
 			
-			return addMember(u.getName(),u.getAgeRange().getAge(),u.myProfil());
+			for (int i=0; i<family.size(); i++) {
+				if(getMember(family.get(i).getName()) != null) {
+					relate(2, m, getMember(family.get(i).getName()));
+				}
+			}
+			
+			return m;
 		}
 		return null;
 	}
