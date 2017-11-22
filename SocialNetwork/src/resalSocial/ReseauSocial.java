@@ -30,7 +30,11 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public Collection<? extends MemberInterface> getMembers() {
-		return (Collection<? extends MemberInterface>) g.sommets();
+		try{
+			return (Collection<? extends MemberInterface>) g.sommets();
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 	@Override
@@ -58,21 +62,22 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public void relate(int force, MemberInterface member, MemberInterface friend) {
 		g.ajouterArc((Sommet) member, (Sommet) friend, force);
+		g.ajouterArc((Sommet) friend, (Sommet) member, force);
 	}
 
 	@Override
 	public Set<? extends MemberInterface> relateToRank(MemberInterface member, int rank) {
 		ParcoursSimple parcours = new ParcoursSimple(g);
+		Set<? extends MemberInterface> result;
 		for(Sommet m : parcours.voisinsAuRang((Sommet) member, rank)){
-			relate(0, member, (MemberInterface) m);
+			relate(1, member, (MemberInterface) m);
 		}
-		return null;
+		return (Set<? extends MemberInterface>) parcours.voisinsAuRang((Sommet) member, rank);
 	}
 
 	@Override
 	public int distance(MemberInterface member1, MemberInterface member2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return new ParcoursSimple(g).cheminLePlusCourt((Sommet) member1, (Sommet) member2).distance();
 	}
 
 	@Override
