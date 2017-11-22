@@ -62,8 +62,7 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public int distance(MemberInterface member1, MemberInterface member2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return new ParcoursSimple(g).cheminLePlusCourt((Sommet) member1, (Sommet) member2).distance();
 	}
 
 	@Override
