@@ -6,6 +6,7 @@ import java.util.Set;
 
 import facebookGhost.FacebookGhostNetwork;
 import grapheSimple.GrapheSimple;
+import grapheSimple.ParcoursSimple;
 import grapheX.Sommet;
 import reseauSocial.core.MemberInterface;
 import reseauSocial.core.SocialNetworkInterface;
@@ -50,7 +51,10 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public Set<? extends MemberInterface> relateToRank(MemberInterface member, int rank) {
-		// TODO Auto-generated method stub
+		ParcoursSimple parcours = new ParcoursSimple(g);
+		for(Sommet m : parcours.voisinsAuRang((Sommet) member, rank)){
+			relate(0, member, (MemberInterface) m);
+		}
 		return null;
 	}
 
