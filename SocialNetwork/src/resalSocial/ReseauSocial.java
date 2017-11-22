@@ -28,7 +28,11 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public Collection<? extends MemberInterface> getMembers() {
-		return (Collection<? extends MemberInterface>) g.sommets();
+		try{
+			return (Collection<? extends MemberInterface>) g.sommets();
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 	@Override
