@@ -40,7 +40,9 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public MemberInterface addMember(String ident, boolean belongsToAnotherNetwork) {
-		// TODO Auto-generated method stub
+		if(belongsToAnotherNetwork){
+			
+		}
 		return null;
 	}
 

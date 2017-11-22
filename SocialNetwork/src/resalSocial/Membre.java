@@ -6,9 +6,6 @@ import grapheX.Sommet;
 import reseauSocial.core.MemberInterface;
 
 public class Membre extends MembreAbstract implements MemberInterface{
-	String nom;
-	int age;
-	String descr;
 	
 	HashMap<Membre, Integer> relations = new HashMap<Membre, Integer>();
 	
