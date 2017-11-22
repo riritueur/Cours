@@ -192,6 +192,7 @@ public class MainScenario {
 
         //Test relations
         Set<? extends MemberInterface> membresAmis = iutRS.relateToRank(admete, 1);
+        System.out.println(membresAmis);
         assertEquals("taille des amis de Admete au rang 1 : 1 membre Hercule", 1, membresAmis.size());
 
         membresAmis = iutRS.relateToRank(hera, 1);

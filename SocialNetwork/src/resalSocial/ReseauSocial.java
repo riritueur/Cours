@@ -16,7 +16,7 @@ import reseauSocial.core.SocialNetworkInterface;
 public class ReseauSocial implements SocialNetworkInterface{
 	String nom;
 	GrapheSimple g = new GrapheSimple();
-	private FacebookGhostNetwork autreReseau ;
+	FacebookGhostNetwork autreReseau ;
 	
 	public ReseauSocial(String nom){this.nom = nom;}
 
@@ -26,7 +26,11 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public MemberInterface getMember(String identifier) {
-		return (MemberInterface) g.getSommet(identifier);
+		try{
+			return (MemberInterface) g.getSommet(identifier);
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 	@Override
@@ -48,7 +52,10 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public MemberInterface addMember(String ident, boolean belongsToAnotherNetwork) {
 		if(belongsToAnotherNetwork){
-			
+			if(getMember(ident) != null) {
+				System.out.println("papier");
+				return null;
+			}
 			User u = autreReseau.getUser(ident);
 			if(u==null)
 				return null;
@@ -59,6 +66,7 @@ public class ReseauSocial implements SocialNetworkInterface{
 			for (int i=0; i<friends.size(); i++) {
 				if(getMember(friends.get(i).getName()) != null) {
 					relate(3, m, getMember(friends.get(i).getName()));
+					System.out.println(i + " " + getMember(friends.get(i).getName()));
 				}
 			}
 			
@@ -92,7 +100,6 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public void setOtherNetwork(FacebookGhostNetwork f) {
 		autreReseau = f;
-		
 	}
 	
 }
