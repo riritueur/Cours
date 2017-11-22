@@ -16,6 +16,7 @@ import reseauSocial.core.SocialNetworkInterface;
 public class ReseauSocial implements SocialNetworkInterface{
 	String nom;
 	GrapheSimple g = new GrapheSimple();
+	private FacebookGhostNetwork autreReseau ;
 	
 	public ReseauSocial(String nom){this.nom = nom;}
 
@@ -47,8 +48,8 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public MemberInterface addMember(String ident, boolean belongsToAnotherNetwork) {
 		if(belongsToAnotherNetwork){
-			FacebookGhostNetwork t = new FacebookGhostNetwork();
-			User u = t.getUser(ident);
+			
+			User u = autreReseau.getUser(ident);
 			if(u==null)
 				return null;
 			MemberInterface m = addMember(u.getName(),u.getAgeRange().getAge(),u.myProfil());
@@ -94,7 +95,7 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public void setOtherNetwork(FacebookGhostNetwork f) {
-		// TODO Auto-generated method stub
+		autreReseau = f;
 		
 	}
 	
