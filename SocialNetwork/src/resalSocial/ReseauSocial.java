@@ -80,10 +80,6 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public Set<? extends MemberInterface> relateToRank(MemberInterface member, int rank) {
 		ParcoursSimple parcours = new ParcoursSimple(g);
-		Set<? extends MemberInterface> result;
-		for(Sommet m : parcours.voisinsAuRang((Sommet) member, rank)){
-			relate(1, member, (MemberInterface) m);
-		}
 		return (Set<? extends MemberInterface>) parcours.voisinsAuRang((Sommet) member, rank);
 	}
 
