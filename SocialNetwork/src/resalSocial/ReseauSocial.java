@@ -1,10 +1,12 @@
 package resalSocial;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Observable;
 import java.util.Set;
 
 import facebookGhost.FacebookGhostNetwork;
+import facebookGhost.User;
 import grapheSimple.GrapheSimple;
 import grapheSimple.ParcoursSimple;
 import grapheX.Sommet;
@@ -41,7 +43,14 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public MemberInterface addMember(String ident, boolean belongsToAnotherNetwork) {
 		if(belongsToAnotherNetwork){
+			FacebookGhostNetwork t = new FacebookGhostNetwork();
+			User u = t.getUser(ident);
+			ArrayList<User> friends = u.getFriends();
+			ArrayList<User> family = u.getFamily();
 			
+			getMember(friends.get(0).getName());
+			
+			return addMember(u.getName(),u.getAgeRange().getAge(),u.myProfil());
 		}
 		return null;
 	}
