@@ -49,6 +49,7 @@ public class ReseauSocial implements SocialNetworkInterface{
 	@Override
 	public void relate(int force, MemberInterface member, MemberInterface friend) {
 		g.ajouterArc((Sommet) member, (Sommet) friend, force);
+		g.ajouterArc((Sommet) friend, (Sommet) member, force);
 	}
 
 	@Override
