@@ -8,6 +8,8 @@ public class UserEvent implements Event {
 		this.user = user;
 	}
 	
-	public User getUser(){return user;}
+	public User getUser(){
+		return user;
+	}
 
 }
