@@ -53,7 +53,6 @@ public class ReseauSocial implements SocialNetworkInterface{
 	public MemberInterface addMember(String ident, boolean belongsToAnotherNetwork) {
 		if(belongsToAnotherNetwork){
 			if(getMember(ident) != null) {
-				System.out.println("papier");
 				return null;
 			}
 			User u = autreReseau.getUser(ident);
@@ -65,14 +64,15 @@ public class ReseauSocial implements SocialNetworkInterface{
 			
 			for (int i=0; i<friends.size(); i++) {
 				if(getMember(friends.get(i).getName()) != null) {
-					relate(3, m, getMember(friends.get(i).getName()));
-					System.out.println(i + " " + getMember(friends.get(i).getName()));
+					relate(3, getMember(m.ident()), getMember(friends.get(i).getName()));
+					relate(3, getMember(friends.get(i).getName()), getMember(m.ident()));
 				}
 			}
 			
 			for (int i=0; i<family.size(); i++) {
 				if(getMember(family.get(i).getName()) != null) {
-					relate(2, m, getMember(family.get(i).getName()));
+					relate(2, getMember(m.ident()), getMember(family.get(i).getName()));
+					relate(2, getMember(family.get(i).getName()), getMember(m.ident()));
 				}
 			}
 			
