@@ -6,7 +6,9 @@ import java.util.Observable;
 import java.util.Set;
 
 import facebookGhost.FacebookGhostNetwork;
+import facebookGhost.RelationEvent;
 import facebookGhost.User;
+import facebookGhost.UserEvent;
 import grapheSimple.GrapheSimple;
 import grapheSimple.ParcoursSimple;
 import grapheX.Sommet;
@@ -22,6 +24,23 @@ public class ReseauSocial implements SocialNetworkInterface{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		if(arg0 == autreReseau){
+			if(arg1 instanceof UserEvent){
+				UserEvent uEv = (UserEvent)arg1;
+				this.addMember(uEv.getUser().getName(), true);
+			}
+			if(arg1 instanceof RelationEvent){
+				RelationEvent rEv = (RelationEvent) arg1;
+				 	if(rEv.getNature() == "family"){
+				 		relate(2,getMember(rEv.getU1().getName()),getMember(rEv.getU2().getName()));
+				 		relate(2,getMember(rEv.getU2().getName()),getMember(rEv.getU1().getName()));
+				 	}
+				 	if(rEv.getNature() == "Friend"){
+				 		relate(3,getMember(rEv.getU1().getName()),getMember(rEv.getU2().getName()));
+				 		relate(3,getMember(rEv.getU2().getName()),getMember(rEv.getU1().getName()));
+				 	}
+			}
+		}
 	}
 
 	@Override

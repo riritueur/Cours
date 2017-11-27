@@ -7,5 +7,7 @@ public class UserEvent implements Event {
 	public UserEvent(User user) {
 		this.user = user;
 	}
+	
+	public User getUser(){return user;}
 
 }
